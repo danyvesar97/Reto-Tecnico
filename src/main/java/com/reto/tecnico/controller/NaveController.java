@@ -1,5 +1,6 @@
 package com.reto.tecnico.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.reto.tecnico.entities.ClaseNave;
 import com.reto.tecnico.entities.Combustible;
 import com.reto.tecnico.entities.Nave;
+import com.reto.tecnico.entities.abstracts.Operaciones;
 import com.reto.tecnico.services.ClaseNaveService;
 import com.reto.tecnico.services.CombustibleService;
 import com.reto.tecnico.services.NaveService;
@@ -52,6 +54,19 @@ public class NaveController {
 	@RequestMapping(value = "/guardar", method = RequestMethod.POST)
 	public String guardarNave(@ModelAttribute("nave") Nave nave) {
 		naveService.save(nave);
+		return "redirect:/";
+	}
+	
+	@RequestMapping(value = "/despegar", method = RequestMethod.POST)
+	public String guardarHoraDespegue(@ModelAttribute("nave") Nave nave) {
+		switch (nave.getTipo().getTipoNave()) {
+		case "Lanzadera": {
+			
+			break;
+		}
+		
+		}
+		naveService.horaDespegue(nave);
 		return "redirect:/";
 	}
 	

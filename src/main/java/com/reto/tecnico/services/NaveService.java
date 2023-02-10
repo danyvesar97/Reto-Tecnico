@@ -6,10 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.reto.tecnico.entities.Nave;
+import com.reto.tecnico.entities.abstracts.Operaciones;
 import com.reto.tecnico.repository.NaveRepository;
 
 @Service
-public class NaveService {
+public class NaveService extends Operaciones{
 	@Autowired
 	private NaveRepository naveRepository;
 	
@@ -30,5 +31,11 @@ public class NaveService {
 	
 	public void delete(Long id) {
 		naveRepository.deleteById(id);
+	}
+
+	@Override
+	public void horaDespegue(Nave nave) {
+		save(nave);
+		
 	}
 }
