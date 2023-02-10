@@ -22,7 +22,7 @@ import com.reto.tecnico.services.CombustibleService;
 import com.reto.tecnico.services.NaveService;
 
 @Controller
-public class NaveController {
+public class NaveController { /* Controlador implementado para las acciones pedidas en el index.html */
 	@Autowired
 	private NaveService naveService;
 
@@ -32,7 +32,8 @@ public class NaveController {
 	@Autowired
 	private ClaseNaveService claseNaveService;
 
-	@RequestMapping("/")
+	@RequestMapping("/") /* Método que muestra en la página inicialtoda la información de las naves o de alguna en particular, 
+							en base a una palabra clave */
 	public String verPaginaInicial(Model modelo,@Param("palabraClave") String palabraClave) {
 		List<Nave> listaNaves = naveService.listAll(palabraClave);
 		modelo.addAttribute("listaNaves", listaNaves);
@@ -40,7 +41,7 @@ public class NaveController {
 		return "index";
 	}
 
-	@RequestMapping("/nuevo")
+	@RequestMapping("/nuevo") /* Método que muestra el formulario de creación de naves */
 	public String mostrarFormularioRegistroNave(Model modelo) {
 		Nave nave = new Nave();
 		List<Combustible> listaCombustibles = combustibleService.listAll();
@@ -52,12 +53,15 @@ public class NaveController {
 	}
 
 	@RequestMapping(value = "/guardar", method = RequestMethod.POST)
+	/* Método que guarda la información dada de una nave y luego regresa a la página inicial */
 	public String guardarNave(@ModelAttribute("nave") Nave nave) {
 		naveService.save(nave);
 		return "redirect:/";
 	}
 	
 	@RequestMapping(value = "/despegar", method = RequestMethod.POST)
+	/* Método que hace parte de la clase abstracta, donde guarda la hora actual como hora de 
+	 * despegue de una nave */
 	public String guardarHoraDespegue(@ModelAttribute("nave") Nave nave) {
 		switch (nave.getTipo().getTipoNave()) {
 		case "Lanzadera": {
@@ -70,7 +74,7 @@ public class NaveController {
 		return "redirect:/";
 	}
 	
-	@RequestMapping("/editar/{id}")
+	@RequestMapping("/editar/{id}") /* Método que muestra el formulario de edición de una nave */
 	public ModelAndView mostrarFormularioEdicionNave(@PathVariable(name="id") Long id) {
 		ModelAndView modelo = new ModelAndView("editar_nave");
 		Nave nave = naveService.get(id);
@@ -82,7 +86,7 @@ public class NaveController {
 		return modelo;
 	}
 	
-	@RequestMapping("/eliminar/{id}")
+	@RequestMapping("/eliminar/{id}") /* Método que borra la información dada de una nave y luego regresa a la página inicial */
 	public String eliminarNave(@PathVariable(name="id") Long id) {
 		naveService.delete(id);
 		return "redirect:/";
