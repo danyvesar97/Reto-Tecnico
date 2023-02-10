@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Estructura de la página inicial del proyecto -->
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
@@ -9,15 +10,15 @@
 	rel="stylesheet"
 	integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
 	crossorigin="anonymous">
-</head>
+</head> <!-- Link de Bootstrap -->
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="/">Control de naves</a>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<a class="navbar-brand" href="/">Control de naves</a> <!-- Link para regresar a la página inicial -->
+			<div class="collapse navbar-collapse" id="navbarSupportedContent"> 
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="/nuevo">Agregar nave</a></li>
+						aria-current="page" href="/nuevo">Agregar nave</a></li><!-- Link para crear y agregar una nueva nave -->
 				</ul>
 			</div>
 		</div>
@@ -33,9 +34,10 @@
 					id="palabraClave" th:value="${palabraClave}"
 					placeholder="Digite el valor a buscar" required>
 			</div>
-			<input type="submit" class="btn btn-info mb-2" value="Buscar">
+			<input type="submit" class="btn btn-info mb-2" value="Buscar"> <!-- Botón para buscar una nave en base a una palabra clave -->
 			&nbsp;&nbsp;
 			<input type="button" class="btn btn-secondary mb-2" value="Limpiar" onclick="limpiarCampos()">
+			<!-- Botón que limpia los campos mostrados luego de una búsqueda, mostrando todos los datos de la tabla -->
 		</form>
 		<table class="table">
 			<thead class="table-dark">
@@ -60,14 +62,15 @@
 					<td th:text="${nave.peso}"></td>
 					<td th:text="${nave.combustible.getTipoCombustible()}"></td>
 					<td><a class="btn btn-primary"
-						th:href="@{'/editar/' + ${nave.id}}">Editar</a> &nbsp; <a
-						class="btn btn-danger" th:href="@{'/eliminar/' + ${nave.id}}">Eliminar</a>
+						th:href="@{'/editar/' + ${nave.id}}">Editar</a> <!-- Botón que permite editar la información de una nave -->
+						&nbsp; 
+						<a class="btn btn-danger" th:href="@{'/eliminar/' + ${nave.id}}">Eliminar</a> <!-- Botón que elimina una nave -->
 					</td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
-	<script type="text/javascript">
+	<script type="text/javascript"> <!-- Función usada en el botón Limpiar, que vuelve a mostrar todas las naves -->
 		function limpiarCampos(){
 			window.location='/';
 		}
@@ -75,6 +78,6 @@
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-		crossorigin="anonymous"></script>
+		crossorigin="anonymous"></script> <!-- Script de Bootstrap -->
 </body>
 </html>

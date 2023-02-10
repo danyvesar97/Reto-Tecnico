@@ -7,7 +7,9 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.reto.tecnico.entities.Nave;
 
-public interface NaveRepository extends JpaRepository<Nave, Long>{
+public interface NaveRepository extends JpaRepository<Nave, Long>{ 
+	/* Estructura de la interfaz para la clase principal Nave, donde se implementa
+	 * el query para la búsqueda SQL usada en el index.html*/
 	@Query(CONSULTA_GENERAL)
 	public List<Nave> findAll(String palabraClave);
 }

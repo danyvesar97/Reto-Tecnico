@@ -9,11 +9,11 @@ import com.reto.tecnico.entities.ClaseNave;
 import com.reto.tecnico.repository.ClaseNaveRepository;
 
 @Service
-public class ClaseNaveService {
+public class ClaseNaveService { /* Estructura del servicio para la clase ClaseNave */
 	@Autowired
 	private ClaseNaveRepository claseNaveRepository;
 	
-	public List<ClaseNave> listAll(){
+	public List<ClaseNave> listAll(){ /* Lista todas las clases de nave que hay */
 		return claseNaveRepository.findAll();
 	}
 }

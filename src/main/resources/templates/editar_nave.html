@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- Estructura de la página de edición de naves -->
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
@@ -13,11 +14,11 @@
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="/">Control de naves</a>
+			<a class="navbar-brand" href="/">Control de naves</a> <!-- Link que regresa a la página principal -->
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item"><a class="nav-link active"
-						aria-current="page" href="/nuevo">Agregar nave</a></li>
+						aria-current="page" href="/nuevo">Agregar nave</a></li> <!-- Link que permite crear y agreagar una nave -->
 				</ul>
 			</div>
 		</div>
@@ -30,6 +31,7 @@
 				<h1 class="text-center">Edición de nave</h1>
 				<div class="card-body">
 					<form th:action="@{/guardar}" th:object="${nave}" method="post">
+					<!-- Formulario de edición de la nave --> 
 						<div class="form-group">
 							<label>ID de la nave: </label> <input type="text" name="nombre"
 								th:field="*{id}" class="form-control" readonly="readonly">
@@ -68,7 +70,7 @@
 								th:field="*{peso}" class="form-control" required>
 						</div>
 						<div class="box-footer">
-							<button class="btn btn-success">Guardar</button>
+							<button class="btn btn-success">Guardar</button> <!-- Botón que guarda la información dada antes -->
 						</div>
 					</form>
 				</div>
