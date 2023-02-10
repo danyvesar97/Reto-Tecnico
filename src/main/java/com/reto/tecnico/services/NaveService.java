@@ -13,7 +13,10 @@ public class NaveService {
 	@Autowired
 	private NaveRepository naveRepository;
 	
-	public List<Nave> listAll(){
+	public List<Nave> listAll(String palabraClave){
+		if(palabraClave != null) {
+			return naveRepository.findAll(palabraClave);
+		}
 		return naveRepository.findAll();
 	}
 	

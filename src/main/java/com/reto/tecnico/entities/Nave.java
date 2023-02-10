@@ -14,17 +14,14 @@ public class Nave {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(nullable = false, length = 60)
-	private String tipo;
-
-//	@Column(nullable = false, length = 100)
-//	private String tipoCombustible;
-	
 	@ManyToOne
 	@JoinColumn(name="combustible_id")
 	private Combustible combustible;
 	
-
+	@ManyToOne
+	@JoinColumn(name="clase_nave_id")
+	private ClaseNave tipo;
+	
 	@Column(nullable = false, length = 100)
 	private String nombre;
 
@@ -37,12 +34,12 @@ public class Nave {
 	@Column(nullable = false)
 	private float peso;
 
-	public Nave(Long id, String tipo, Combustible combustible, String nombre, String paisOrigen, float altura,
+	public Nave(Long id, Combustible combustible, ClaseNave tipo, String nombre, String paisOrigen, float altura,
 			float peso) {
 		super();
 		this.id = id;
-		this.tipo = tipo;
 		this.combustible = combustible;
+		this.tipo = tipo;
 		this.nombre = nombre;
 		this.paisOrigen = paisOrigen;
 		this.altura = altura;
@@ -61,20 +58,20 @@ public class Nave {
 		this.id = id;
 	}
 
-	public String getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
-
 	public Combustible getCombustible() {
 		return combustible;
 	}
 
 	public void setCombustible(Combustible combustible) {
 		this.combustible = combustible;
+	}
+
+	public ClaseNave getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(ClaseNave tipo) {
+		this.tipo = tipo;
 	}
 
 	public String getNombre() {
@@ -110,17 +107,4 @@ public class Nave {
 	}
 
 	
-
-	
-
-//	public String getTipoCombustible() {
-//		return tipoCombustible;
-//	}
-//
-//	public void setTipoCombustible(String tipoCombustible) {
-//		this.tipoCombustible = tipoCombustible;
-//	}
-	
-
-
 }
